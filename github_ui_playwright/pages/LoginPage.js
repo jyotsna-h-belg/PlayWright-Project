@@ -1,0 +1,21 @@
+class LoginPage {
+  constructor(page) {
+    this.page = page;
+    this.username = '#login_field';
+    this.password = '#password';
+    this.loginBtn = 'input[type="submit"]';
+    this.errorMessage = '.flash-error';
+  }
+
+  async goto() {
+    await this.page.goto('/login');
+  }
+
+  async login(user, pass) {
+    await this.page.fill(this.username, user);
+    await this.page.fill(this.password, pass);
+    await this.page.click(this.loginBtn);
+  }
+}
+
+module.exports = LoginPage;
