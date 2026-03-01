@@ -5,22 +5,13 @@ class RepositoryPage {
     this.page = page;
 
     //this.newRepoBtn = 'text=New';
-    this.repoNameField = '#repository-name-input';
+    this.repoNameField = "#repository-name-input";
     this.createBtn = 'button:has-text("Create repository")';
-    //'text=Create repository';
-    this.errorMsg = '.flash-error';
+    //this.errorMsg = ".flash-error";
+    this.errorMsg = "#repository-name-input[aria-invalid='true']";
   }
 
   async createRepository(name) {
-      
-      // If owner selection appears
-  // const ownerSelector = this.page.locator('text=Select owner');
-
-  // if (await ownerSelector.isVisible().catch(() => false)) {
-  //   await this.page.click('text=YourUsername'); 
-  // }
-
-    //await this.page.click(this.newRepoBtn);
     await this.page.waitForSelector(this.repoNameField);
     await this.page.fill(this.repoNameField, name);
     await this.page.click(this.createBtn);
